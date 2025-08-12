@@ -997,8 +997,7 @@ RUN pip3 install --upgrade pip \\
           docker \\
           virtualenv \\
           patchelf==0.17.2 \\
-          cmake==4.0.3 \\
-      && cp /usr/local/lib/python3.12/dist-packages/cmake/data/share/cmake-4.0/Modules/TestEndianness.c.in /usr/local/lib/python3.12/dist-packages/cmake/data/share/cmake-4.0/Modules/TestEndianess.c.in
+          cmake==4.0.3
 
 # Install boost version >= 1.78 for boost::span
 # Current libboost-dev apt packages are < 1.78, so install from tar.gz
@@ -1109,8 +1108,7 @@ RUN pip3 install --upgrade \\
           docker \\
           virtualenv \\
           patchelf==0.17.2 \\
-          cmake==4.0.3 \\
-      && cp /usr/local/lib/python3.12/dist-packages/cmake/data/share/cmake-4.0/Modules/TestEndianness.c.in /usr/local/lib/python3.12/dist-packages/cmake/data/share/cmake-4.0/Modules/TestEndianess.c.in
+          cmake==4.0.3
 
 # Install boost version >= 1.78 for boost::span
 # Current libboost-dev apt packages are < 1.78, so install from tar.gz
