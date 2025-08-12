@@ -1788,6 +1788,11 @@ def create_docker_build_script(script_name, container_install_dir, container_ci_
                 "--pull",
             ]
 
+        if FLAGS.no_container_cache:
+            baseargs += [
+                "--no-cache",
+            ]
+
         # Windows docker runs in a VM and memory needs to be specified
         # explicitly (at least for some configurations of docker).
         if target_platform() == "windows":
@@ -2469,6 +2474,12 @@ if __name__ == "__main__":
         action="store_true",
         required=False,
         help="Do not use Docker --pull argument when building container.",
+    )
+    parser.add_argument(
+        "--no-container-cache",
+        action="store_true",
+        required=False,
+        help="Use Docker --no-cache when building container.",
     )
     parser.add_argument(
         "--container-memory",
