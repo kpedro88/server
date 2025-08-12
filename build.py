@@ -2420,7 +2420,9 @@ def enable_all():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
     group_qv = parser.add_mutually_exclusive_group()
     group_qv.add_argument(
