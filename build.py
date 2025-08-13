@@ -701,6 +701,12 @@ def onnxruntime_cmake_args(images, library_paths):
                     "onnxruntime", "TRITON_BUILD_CONTAINER", None, images["base"]
                 )
             )
+        elif "buildbase" in images:
+            cargs.append(
+                cmake_backend_arg(
+                    "onnxruntime", "TRITON_BUILD_CONTAINER", None, images["buildbase"]
+                )
+            )
         else:
             cargs.append(
                 cmake_backend_arg(
@@ -767,6 +773,12 @@ def openvino_cmake_args():
                     "openvino", "TRITON_BUILD_CONTAINER", None, images["base"]
                 )
             )
+        elif "buildbase" in images:
+            cargs.append(
+                cmake_backend_arg(
+                    "openvino", "TRITON_BUILD_CONTAINER", None, images["buildbase"]
+                )
+            )
         else:
             cargs.append(
                 cmake_backend_arg(
@@ -804,6 +816,10 @@ def fil_cmake_args(images):
     if "base" in images:
         cargs.append(
             cmake_backend_arg("fil", "TRITON_BUILD_CONTAINER", None, images["base"])
+        )
+    elif "buildbase" in images:
+        cargs.append(
+            cmake_backend_arg("fil", "TRITON_BUILD_CONTAINER", None, images["buildbase"])
         )
     else:
         cargs.append(
@@ -2592,7 +2608,7 @@ if __name__ == "__main__":
         "--image",
         action="append",
         required=False,
-        help='Use specified Docker image in build as <image-name>,<full-image-name>. <image-name> can be "base", "gpu-base", or "pytorch".',
+        help='Use specified Docker image in build as <image-name>,<full-image-name>. <image-name> can be "base", "buildbase", "gpu-base", or "pytorch".',
     )
 
     parser.add_argument(
@@ -2943,7 +2959,7 @@ if __name__ == "__main__":
             len(parts) != 2, "--image must specify <image-name>,<full-image-registry>"
         )
         fail_if(
-            parts[0] not in ["base", "gpu-base", "pytorch"],
+            parts[0] not in ["base", "buildbase", "gpu-base", "pytorch"],
             "unsupported value for --image",
         )
         log('image "{}": "{}"'.format(parts[0], parts[1]))
