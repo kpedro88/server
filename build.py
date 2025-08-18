@@ -2369,16 +2369,17 @@ def enable_all():
             "repeat",
             "onnxruntime",
             "python",
-            "dali",
+#            "dali",
             "pytorch",
-            "openvino",
-            "fil",
+#            "openvino",
+#            "fil",
             "tensorrt",
         ]
         all_repoagents = ["checksum"]
         all_caches = ["local", "redis"]
         all_filesystems = ["gcs", "s3", "azure_storage"]
-        all_endpoints = ["http", "grpc", "sagemaker", "vertex-ai"]
+#        all_endpoints = ["http", "grpc", "sagemaker", "vertex-ai"]
+        all_endpoints = ["http", "grpc"]
 
         FLAGS.enable_logging = True
         FLAGS.enable_stats = True
